@@ -1,0 +1,97 @@
+C51 COMPILER V8.12   SEVENSEGMENT                                                          07/22/2016 21:18:25 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE SEVENSEGMENT
+OBJECT MODULE PLACED IN sevensegment.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE sevensegment.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <stdio.h>
+   3          
+   4          void delay();
+   5          
+   6          sbit eseg1000 = P3^7;
+   7          sbit eseg100 = P3^6;
+   8          sbit eseg10 = P3^5;
+   9          sbit eseg1 = P3^4;
+  10          
+  11          unsigned char d0,d1,d2,d3;
+  12          
+  13          unsigned char SetDisplay(unsigned char value)
+  14          {
+  15   1              unsigned char segment[] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x83,0xf8,0x80,0x98};
+  16   1              if (value<10)
+  17   1                      return segment[value];
+  18   1              else
+  19   1                      return 0;
+  20   1      }
+  21          
+  22          void delay()
+  23          {
+  24   1              int i;
+  25   1              for (i=0;i<500;i++)
+  26   1                      i=i+0;
+  27   1      }
+  28          
+  29          void main(void)
+  30          {
+  31   1              unsigned char count = 0;
+  32   1              unsigned long timer = 0;
+  33   1              int turn = 1;
+  34   1              P2 = 0xff;
+  35   1              d0=4;
+  36   1              d1=3;
+  37   1              d2=2;
+  38   1              d3=1;
+  39   1              while(1)
+  40   1              {
+  41   2                              if (turn == 1)
+  42   2                                      {
+  43   3                                              eseg1000=eseg100=eseg10=0;
+  44   3                                              eseg1=1;
+  45   3                                              P2=SetDisplay(d0);
+  46   3                                      }
+  47   2                              else if (turn==2)
+  48   2                                      {
+  49   3                                              eseg1000=eseg100=eseg1=0;
+  50   3                                              eseg10=1;
+  51   3                                              P2=SetDisplay(d1);
+  52   3                                      }
+  53   2                              else if (turn==3)
+  54   2                                      {
+  55   3                                              eseg1000=eseg1=eseg10=0;
+C51 COMPILER V8.12   SEVENSEGMENT                                                          07/22/2016 21:18:25 PAGE 2   
+
+  56   3                                              eseg100=1;
+  57   3                                              P2=SetDisplay(d2);
+  58   3                                      }
+  59   2                              else
+  60   2                                      {
+  61   3                                              eseg1=eseg100=eseg10=0;
+  62   3                                              eseg1000=1;
+  63   3                                              P2=SetDisplay(d3);
+  64   3                                      }
+  65   2      
+  66   2                      if (turn>=4){
+  67   3                       turn =0;
+  68   3                      }
+  69   2                      turn=turn+1;
+  70   2                      delay();
+  71   2              }
+  72   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    196    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4      18
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

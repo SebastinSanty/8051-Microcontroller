@@ -1,0 +1,82 @@
+C51 COMPILER V8.12   LCD                                                                   07/22/2016 22:22:44 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN LCD.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          void comwrt (unsigned char);
+   4          void datawrt (unsigned char);
+   5          void delay ();
+   6          
+   7          sbit RS = P2^0;
+   8          sbit RW = P2^1;
+   9          sbit EN = P2^2;
+  10          
+  11          void main()
+  12          {
+  13   1              comwrt(0x38);
+  14   1              delay();
+  15   1              comwrt(0x0E);
+  16   1              delay();
+  17   1              comwrt(0x01);
+  18   1              delay();
+  19   1              comwrt(0x06);
+  20   1              delay();
+  21   1              comwrt(0x84);
+  22   1              delay();
+  23   1              datawrt('N');
+  24   1              delay();
+  25   1      
+  26   1      }
+  27          
+  28          void comwrt (unsigned char value)
+  29          {
+  30   1              P1 = value;
+  31   1              RS = 0;
+  32   1              RW = 0;
+  33   1              EN = 1;
+  34   1              delay();
+  35   1              EN = 0;
+  36   1      }
+  37          
+  38          void datawrt (unsigned char value)
+  39          {
+  40   1              P1 = value;
+  41   1              RS = 1;
+  42   1              RW = 0;
+  43   1              EN = 1;
+  44   1              delay();
+  45   1              EN = 0;
+  46   1      }
+  47          
+  48          void delay ()
+  49          {
+  50   1              int i,j;
+  51   1              for(i=0;i<10;i++)
+  52   1              {       
+  53   2                      for(j=0;j<100;j++)
+  54   2                      {
+  55   3                      }
+C51 COMPILER V8.12   LCD                                                                   07/22/2016 22:22:44 PAGE 2   
+
+  56   2              }
+  57   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    105    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
