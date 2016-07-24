@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.11                                                        07/22/2016  21:18:25  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.11                                                        07/24/2016  12:18:57  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.11, INVOKED BY:
@@ -12,6 +12,7 @@ INPUT MODULES INCLUDED:
   STARTUP.obj (?C_STARTUP)
   sevensegment.obj (SEVENSEGMENT)
   C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULCMP)
 
 
 LINK MAP OF MODULE:  sevensegment (?C_STARTUP)
@@ -28,12 +29,12 @@ LINK MAP OF MODULE:  sevensegment (?C_STARTUP)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     00F6H     UNIT         ?C?LIB_CODE
-            CODE    00F9H     0089H     UNIT         ?PR?MAIN?SEVENSEGMENT
-            CODE    0182H     0027H     UNIT         ?PR?_SETDISPLAY?SEVENSEGMENT
-            CODE    01A9H     0014H     UNIT         ?PR?DELAY?SEVENSEGMENT
-            CODE    01BDH     000CH     UNIT         ?C_C51STARTUP
-            CODE    01C9H     000AH     UNIT         ?CO?SEVENSEGMENT
+            CODE    0003H     0107H     UNIT         ?C?LIB_CODE
+            CODE    010AH     00F6H     UNIT         ?PR?MAIN?SEVENSEGMENT
+            CODE    0200H     0027H     UNIT         ?PR?_SETDISPLAY?SEVENSEGMENT
+            CODE    0227H     0013H     UNIT         ?PR?DELAY?SEVENSEGMENT
+            CODE    023AH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0246H     000AH     UNIT         ?CO?SEVENSEGMENT
 
 
 
@@ -58,13 +59,13 @@ SEGMENT                                DATA_GROUP
 SYMBOL TABLE OF MODULE:  sevensegment (?C_STARTUP)
 
   VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.11                                                      07/24/2016  12:18:57  PAGE 2
+
+
   ----------------------------------
-BL51 BANKED LINKER/LOCATER V6.11                                                      07/22/2016  21:18:25  PAGE 2
-
-
 
   -------         MODULE        ?C_STARTUP
-  C:01BDH         SEGMENT       ?C_C51STARTUP
+  C:023AH         SEGMENT       ?C_C51STARTUP
   I:001EH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
@@ -74,7 +75,7 @@ SYMBOL TABLE OF MODULE:  sevensegment (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:01C0H         SYMBOL        IDATALOOP
+  C:023DH         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -83,18 +84,18 @@ SYMBOL TABLE OF MODULE:  sevensegment (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:01BDH         SYMBOL        STARTUP1
+  C:023AH         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:01BDH         LINE#         133
-  C:01BFH         LINE#         134
-  C:01C0H         LINE#         135
-  C:01C1H         LINE#         136
-  C:01C3H         LINE#         185
-  C:01C6H         LINE#         196
+  C:023AH         LINE#         133
+  C:023CH         LINE#         134
+  C:023DH         LINE#         135
+  C:023EH         LINE#         136
+  C:0240H         LINE#         185
+  C:0243H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        SEVENSEGMENT
@@ -102,42 +103,51 @@ SYMBOL TABLE OF MODULE:  sevensegment (?C_STARTUP)
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   B:00B0H.5       PUBLIC        eseg10
-  C:0182H         PUBLIC        _SetDisplay
-  C:01A9H         PUBLIC        delay
+  C:0200H         PUBLIC        _SetDisplay
+  C:0227H         PUBLIC        delay
   D:001AH         PUBLIC        d0
   D:001BH         PUBLIC        d1
   D:001CH         PUBLIC        d2
   D:001DH         PUBLIC        d3
-  C:00F9H         PUBLIC        main
+  C:010AH         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
   B:00B0H.6       PUBLIC        eseg100
-  C:01C9H         SYMBOL        _?ix1000
+  C:0246H         SYMBOL        _?ix1000
+  B:0088H.5       PUBLIC        TF0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
   B:00B0H.4       PUBLIC        eseg1
   B:00B0H.7       PUBLIC        eseg1000
+BL51 BANKED LINKER/LOCATER V6.11                                                      07/24/2016  12:18:57  PAGE 3
+
+
   -------         PROC          _SETDISPLAY
   D:000FH         SYMBOL        value
   -------         DO            
   D:0010H         SYMBOL        segment
   -------         ENDDO         
-  C:0182H         LINE#         13
-BL51 BANKED LINKER/LOCATER V6.11                                                      07/22/2016  21:18:25  PAGE 3
-
-
-  C:0184H         LINE#         14
-  C:0184H         LINE#         15
-  C:0197H         LINE#         16
-  C:019EH         LINE#         17
-  C:01A6H         LINE#         19
-  C:01A8H         LINE#         20
+  C:0200H         LINE#         13
+  C:0202H         LINE#         14
+  C:0202H         LINE#         15
+  C:0215H         LINE#         16
+  C:021CH         LINE#         17
+  C:0224H         LINE#         19
+  C:0226H         LINE#         20
   -------         ENDPROC       _SETDISPLAY
   -------         PROC          DELAY
-  -------         DO            
-  D:0006H         SYMBOL        i
-  -------         ENDDO         
-  C:01A9H         LINE#         22
-  C:01A9H         LINE#         23
-  C:01A9H         LINE#         25
-  C:01ACH         LINE#         26
-  C:01BCH         LINE#         27
+  C:0227H         LINE#         22
+  C:0227H         LINE#         23
+  C:0227H         LINE#         27
+  C:022AH         LINE#         28
+  C:022DH         LINE#         29
+  C:0230H         LINE#         30
+  C:0232H         LINE#         31
+  C:0235H         LINE#         32
+  C:0235H         LINE#         33
+  C:0235H         LINE#         34
+  C:0237H         LINE#         35
+  C:0239H         LINE#         36
   -------         ENDPROC       DELAY
   -------         PROC          MAIN
   -------         DO            
@@ -145,50 +155,67 @@ SYMBOL TABLE OF MODULE:  sevensegment (?C_STARTUP)
   D:0009H         SYMBOL        timer
   D:000DH         SYMBOL        turn
   -------         ENDDO         
-  C:00F9H         LINE#         29
-  C:00F9H         LINE#         30
-  C:00F9H         LINE#         31
-  C:00FCH         LINE#         32
-  C:0104H         LINE#         33
-  C:0109H         LINE#         34
-  C:010CH         LINE#         35
-  C:010FH         LINE#         36
-  C:0112H         LINE#         37
-  C:0115H         LINE#         38
-  C:0118H         LINE#         39
-  C:0118H         LINE#         40
-  C:0118H         LINE#         41
-  C:0120H         LINE#         42
-  C:0120H         LINE#         43
-  C:0126H         LINE#         44
-  C:0128H         LINE#         45
-  C:012AH         LINE#         46
-  C:012CH         LINE#         47
-  C:0134H         LINE#         48
-  C:0134H         LINE#         49
-  C:013AH         LINE#         50
-  C:013CH         LINE#         51
-  C:013EH         LINE#         52
-  C:0140H         LINE#         53
-  C:0148H         LINE#         54
-  C:0148H         LINE#         55
-  C:014EH         LINE#         56
-  C:0150H         LINE#         57
-  C:0152H         LINE#         58
-  C:0154H         LINE#         60
-  C:0154H         LINE#         61
-  C:015AH         LINE#         62
-  C:015CH         LINE#         63
-BL51 BANKED LINKER/LOCATER V6.11                                                      07/22/2016  21:18:25  PAGE 4
+  C:010AH         LINE#         38
+  C:010AH         LINE#         39
+  C:010AH         LINE#         40
+  C:010DH         LINE#         41
+  C:0115H         LINE#         42
+  C:011AH         LINE#         43
+  C:011DH         LINE#         44
+  C:0125H         LINE#         45
+  C:0125H         LINE#         46
+  C:0125H         LINE#         47
+  C:012DH         LINE#         48
+  C:012DH         LINE#         49
+  C:0133H         LINE#         50
+  C:013AH         LINE#         51
+  C:013CH         LINE#         52
+  C:013EH         LINE#         53
+  C:0146H         LINE#         54
+  C:0146H         LINE#         55
+  C:014CH         LINE#         56
+  C:0153H         LINE#         57
+  C:0155H         LINE#         58
+  C:0157H         LINE#         59
+  C:015FH         LINE#         60
+  C:015FH         LINE#         61
+BL51 BANKED LINKER/LOCATER V6.11                                                      07/24/2016  12:18:57  PAGE 4
 
 
-  C:0163H         LINE#         64
-  C:0163H         LINE#         66
+  C:0165H         LINE#         62
+  C:016CH         LINE#         63
+  C:016EH         LINE#         64
+  C:0170H         LINE#         66
   C:0170H         LINE#         67
-  C:0175H         LINE#         68
-  C:0175H         LINE#         69
-  C:017DH         LINE#         70
-  C:0180H         LINE#         71
+  C:0176H         LINE#         68
+  C:017DH         LINE#         69
+  C:017FH         LINE#         70
+  C:017FH         LINE#         72
+  C:018CH         LINE#         73
+  C:0191H         LINE#         74
+  C:0191H         LINE#         75
+  C:0199H         LINE#         76
+  C:019CH         LINE#         77
+  C:01B0H         LINE#         78
+  C:01B2H         LINE#         79
+  C:01BAH         LINE#         80
+  C:01C1H         LINE#         81
+  C:01C4H         LINE#         82
+  C:01C6H         LINE#         83
+  C:01C6H         LINE#         84
+  C:01CDH         LINE#         85
+  C:01D0H         LINE#         86
+  C:01D2H         LINE#         87
+  C:01D2H         LINE#         88
+  C:01D9H         LINE#         89
+  C:01DCH         LINE#         90
+  C:01DEH         LINE#         91
+  C:01DEH         LINE#         92
+  C:01E5H         LINE#         93
+  C:01E8H         LINE#         94
+  C:01E8H         LINE#         96
+  C:01E8H         LINE#         97
+  C:01FDH         LINE#         98
   -------         ENDPROC       MAIN
   -------         ENDMOD        SEVENSEGMENT
 
@@ -196,5 +223,9 @@ SYMBOL TABLE OF MODULE:  sevensegment (?C_STARTUP)
   C:00D3H         PUBLIC        ?C?COPY
   -------         ENDMOD        ?C?COPY
 
-Program Size: data=31.0 xdata=0 code=467
+  -------         MODULE        ?C?ULCMP
+  C:00F9H         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+Program Size: data=31.0 xdata=0 code=592
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

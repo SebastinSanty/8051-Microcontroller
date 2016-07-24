@@ -21,9 +21,18 @@ unsigned char SetDisplay(unsigned char value)
 
 void delay()
 {
- 	int i;
+ /*	int i;
 	for (i=0;i<500;i++)
-		i=i+0;
+		i=i+0;	   */
+	TMOD = 0x01;
+	TH0 = 0x04B;
+	TL0 = 0xFD;
+	TR0 = 1;
+	while(TF0==0)
+	{
+	}
+	TR0 = 0;
+	TF0 = 0;
 }
 
 void main(void)
@@ -32,35 +41,32 @@ void main(void)
 	unsigned long timer = 0;
 	int turn = 1;
 	P2 = 0xff;
-	d0=4;
-	d1=3;
-	d2=2;
-	d3=1;
-	while(1)
+	d0=d1=d2=d3=0;
+	while(1) 
 	{
 		 	if (turn == 1)
 				{
 					eseg1000=eseg100=eseg10=0;
-					eseg1=1;
 					P2=SetDisplay(d0);
+					eseg1=1;
 				}
 			else if (turn==2)
 				{
 					eseg1000=eseg100=eseg1=0;
-					eseg10=1;
 					P2=SetDisplay(d1);
+					eseg10=1;
 				}
 			else if (turn==3)
 				{
 					eseg1000=eseg1=eseg10=0;
-					eseg100=1;
 					P2=SetDisplay(d2);
+					eseg100=1;
 				}
 			else
 				{
 					eseg1=eseg100=eseg10=0;
-					eseg1000=1;
 					P2=SetDisplay(d3);
+					eseg1000=1;
 				}
 
 		if (turn>=4){
@@ -68,5 +74,26 @@ void main(void)
 		}
 		turn=turn+1;
 		delay();
+		if (timer == 20) {
+		 	d0++;
+			timer=0;
+				if(d0>=10){
+				 	d0=0;
+					d1++;
+				}
+				if(d1>=6){
+				 	d1=0;
+					d2++;
+				}
+				if(d2>=10){
+				 	d2=0;
+					d3++;
+				}
+				if(d3>=6){
+				 	d3=0;
+				}
+
+		}
+		timer++;
 	}
 }
