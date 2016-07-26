@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Santy\Desktop\8051\Keyboard\Keyboard.uv2
+Project File Date:  07/25/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling keyboard.c...
+KEYBOARD.C(10): error C202: 'A': undefined identifier
+KEYBOARD.C(11): error C202: 'A': undefined identifier
+KEYBOARD.C(12): error C202: 'A': undefined identifier
+KEYBOARD.C(12): error C281: illegal hex constant
+KEYBOARD.C(12): error C141: syntax error near 'OF'
+KEYBOARD.C(12): error C141: syntax error near ')', expected ';'
+Target not created
+Build target 'Target 1'
+compiling keyboard.c...
+KEYBOARD.C(12): error C281: illegal hex constant
+KEYBOARD.C(12): error C141: syntax error near 'OF'
+KEYBOARD.C(12): error C141: syntax error near ')', expected ';'
+Target not created
+Build target 'Target 1'
+compiling keyboard.c...
+KEYBOARD.C(14): error C141: syntax error near '}', expected ';'
+Target not created
+Build target 'Target 1'
+compiling keyboard.c...
+linking...
+Program Size: data=9.0 xdata=0 code=32
+"Keyboard" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling keyboard.c...
+keyboard.c(2): warning C318: can't open file 'lcd.h'
+KEYBOARD.C(85): warning C206: 'Lcd8_Init': missing function-prototype
+KEYBOARD.C(88): warning C206: 'Lcd8_Set_Cursor': missing function-prototype
+KEYBOARD.C(88): error C267: 'Lcd8_Set_Cursor': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling keyboard.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD8_SHIFT_RIGHT?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD8_SHIFT_LEFT?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD4_CLEAR?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD4_SET_CURSOR?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD4_INIT?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD4_WRITE_STRING?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD4_SHIFT_RIGHT?KEYBOARD
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD4_SHIFT_LEFT?KEYBOARD
+Program Size: data=27.0 xdata=0 code=1039
+"Keyboard" - 0 Error(s), 8 Warning(s).

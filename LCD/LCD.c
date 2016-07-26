@@ -26,20 +26,37 @@ sbit EN = P2^2;
 
 void main()
 {
-	int coun=0;
-	char c[] = {'1','2','3','4','5','6','7','8','9'};
+	int coun=0,cou=0,m=0;
+	unsigned char d[] = {0xC8,0xC7};
+	char c[] = {'0','1','2','3','4','5','6','7','8','9'};
+	char name[] = "Sebastin";
 	comwrt(0x38);
 	delay();
-	comwrt(0x0E);
+	comwrt(0x0C);
 	delay();
 	comwrt(0x01);
 	delay();
+	while(m<8)
+	{
+	  comwrt(0x84 + m);
+	  datawrt(name[m]);
+	  m++;	
+	}
+	m=0;
 	do
 	{
-		comwrt(0x80);
-		datawrt(c[coun]);
+		while(m<2)
+		{
+		 	comwrt(d[m]);
+			datawrt(c[cou%10]);
+			cou /= 10;
+			m++;
+		}
 		delay_1();
 		coun++;
+		m=0;
+		coun = (coun==20)?0:coun;
+		cou = coun;
 	}while(1);
 
 }

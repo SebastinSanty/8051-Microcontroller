@@ -1,4 +1,4 @@
-C51 COMPILER V8.12   LCD                                                                   07/24/2016 20:35:21 PAGE 1   
+C51 COMPILER V8.12   LCD                                                                   07/25/2016 20:13:36 PAGE 1   
 
 
 C51 COMPILER V8.12, COMPILATION OF MODULE LCD
@@ -35,64 +35,81 @@ line level    source
   26          
   27          void main()
   28          {
-  29   1              int coun=0;
-  30   1              char c[] = {'1','2','3','4','5','6','7','8','9'};
-  31   1              comwrt(0x38);
-  32   1              delay();
-  33   1              comwrt(0x0E);
+  29   1              int coun=0,cou=0,m=0;
+  30   1              unsigned char d[] = {0xC8,0xC7};
+  31   1              char c[] = {'0','1','2','3','4','5','6','7','8','9'};
+  32   1              char name[] = "Sebastin";
+  33   1              comwrt(0x38);
   34   1              delay();
-  35   1              comwrt(0x01);
+  35   1              comwrt(0x0C);
   36   1              delay();
-  37   1              do
-  38   1              {
-  39   2                      comwrt(0x80);
-  40   2                      datawrt(c[coun]);
-  41   2                      delay_1();
-  42   2                      coun++;
-  43   2              }while(1);
-  44   1      
-  45   1      }
-  46          
-  47          void comwrt (unsigned char value)
-  48          {
-  49   1              P1 = value;
-  50   1              RS = 0;
-  51   1              RW = 0;
-  52   1              EN = 1;
-  53   1              delay();
-  54   1              EN = 0;
-  55   1      }
-C51 COMPILER V8.12   LCD                                                                   07/24/2016 20:35:21 PAGE 2   
+  37   1              comwrt(0x01);
+  38   1              delay();
+  39   1              while(m<8)
+  40   1              {
+  41   2                comwrt(0x84 + m);
+  42   2                datawrt(name[m]);
+  43   2                m++;  
+  44   2              }
+  45   1              m=0;
+  46   1              do
+  47   1              {
+  48   2                      while(m<2)
+  49   2                      {
+  50   3                              comwrt(d[m]);
+  51   3                              datawrt(c[cou%10]);
+  52   3                              cou /= 10;
+  53   3                              m++;
+  54   3                      }
+  55   2                      delay_1();
+C51 COMPILER V8.12   LCD                                                                   07/25/2016 20:13:36 PAGE 2   
 
-  56          
-  57          void datawrt (unsigned char value)
-  58          {
-  59   1              P1 = value;
-  60   1              RS = 1;
-  61   1              RW = 0;
-  62   1              EN = 1;
-  63   1              delay();
-  64   1              EN = 0;
-  65   1      }
-  66          
-  67          void delay ()
-  68          {
-  69   1              int i,j;
-  70   1              for(i=0;i<10;i++)
-  71   1              {       
-  72   2                      for(j=0;j<100;j++)
-  73   2                      {
-  74   3                      }
-  75   2              }
-  76   1      }
+  56   2                      coun++;
+  57   2                      m=0;
+  58   2                      coun = (coun==20)?0:coun;
+  59   2                      cou = coun;
+  60   2              }while(1);
+  61   1      
+  62   1      }
+  63          
+  64          void comwrt (unsigned char value)
+  65          {
+  66   1              P1 = value;
+  67   1              RS = 0;
+  68   1              RW = 0;
+  69   1              EN = 1;
+  70   1              delay();
+  71   1              EN = 0;
+  72   1      }
+  73          
+  74          void datawrt (unsigned char value)
+  75          {
+  76   1              P1 = value;
+  77   1              RS = 1;
+  78   1              RW = 0;
+  79   1              EN = 1;
+  80   1              delay();
+  81   1              EN = 0;
+  82   1      }
+  83          
+  84          void delay ()
+  85          {
+  86   1              int i,j;
+  87   1              for(i=0;i<10;i++)
+  88   1              {       
+  89   2                      for(j=0;j<100;j++)
+  90   2                      {
+  91   3                      }
+  92   2              }
+  93   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    164    ----
-   CONSTANT SIZE    =      9    ----
+   CODE SIZE        =    340    ----
+   CONSTANT SIZE    =     21    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      11
+   DATA SIZE        =   ----      27
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
