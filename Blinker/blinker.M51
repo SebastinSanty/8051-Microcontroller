@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.11                                                        07/21/2016  23:07:06  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.11                                                        07/27/2016  22:43:15  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.11, INVOKED BY:
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  blinker (?C_STARTUP)
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
   N:0000H         SYMBOL        IBPSTACK
-BL51 BANKED LINKER/LOCATER V6.11                                                      07/21/2016  23:07:06  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.11                                                      07/27/2016  22:43:15  PAGE 2
 
 
   N:0100H         SYMBOL        IBPSTACKTOP
@@ -89,6 +89,7 @@ SYMBOL TABLE OF MODULE:  blinker (?C_STARTUP)
 
   -------         MODULE        BLINKER
   C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   C:0003H         PUBLIC        delay_1
   C:0024H         PUBLIC        main
@@ -118,10 +119,10 @@ SYMBOL TABLE OF MODULE:  blinker (?C_STARTUP)
   C:0003H         LINE#         20
   C:0006H         LINE#         21
   C:0006H         LINE#         22
+BL51 BANKED LINKER/LOCATER V6.11                                                      07/27/2016  22:43:15  PAGE 3
+
+
   C:0009H         LINE#         23
-BL51 BANKED LINKER/LOCATER V6.11                                                      07/21/2016  23:07:06  PAGE 3
-
-
   C:000CH         LINE#         24
   C:000FH         LINE#         25
   C:0011H         LINE#         26
