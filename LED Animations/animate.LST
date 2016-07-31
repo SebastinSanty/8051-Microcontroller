@@ -1,0 +1,51 @@
+C51 COMPILER V8.12   ANIMATE                                                               07/28/2016 21:35:27 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE ANIMATE
+OBJECT MODULE PLACED IN animate.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE animate.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          sbit pp[] = (P1^0,P1^1,P1^2,P1^3,P1^4,P1^5,P1^6,P1^7);
+*** ERROR C141 IN LINE 3 OF ANIMATE.C: syntax error near '[', expected '='
+   4          
+   5          void delay_1()
+   6          {
+   7   1              int d;
+   8   1              for (d=0;d<20;d++)
+   9   1              {
+  10   2                      TMOD = 0x01;
+  11   2                      TH0 = 0x04B;
+  12   2                      TL0 = 0xFD;
+  13   2                      TR0 = 1;
+  14   2                      while(TF0==0)
+  15   2                      {
+  16   3                      }
+  17   2                      TR0 = 0;
+  18   2                      TF0 = 0;
+  19   2              }
+  20   1      }
+  21          
+  22          void main()
+  23          {
+  24   1              int i=0;
+  25   1              int j=0;
+  26   1              while(1)
+  27   1              {
+  28   2                      for(j=0;j<8;j++)
+  29   2                              pp[j]=0;
+*** ERROR C202 IN LINE 29 OF ANIMATE.C: 'pp': undefined identifier
+  30   2                      if (i>7)
+  31   2                              i=0;
+  32   2                      pp[i]=pp[i+1]=1
+*** ERROR C202 IN LINE 32 OF ANIMATE.C: 'pp': undefined identifier
+  33   2                      i++;
+*** ERROR C141 IN LINE 33 OF ANIMATE.C: syntax error near 'i'
+  34   2                      delay_1();      
+  35   2              }
+  36   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  4 ERROR(S)
